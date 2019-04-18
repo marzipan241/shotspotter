@@ -37,4 +37,5 @@ urban_areas(class = "sf")
 ggplot() +
   geom_sf(data = dc_sf) +
   geom_point(data = washington_dc, aes(x = longitude, y = latitude, alpha = 0.1, color = type)) +
-  transition_states(year, transition_length = 0)
+  transition_states(year, transition_length = 0) +
+  labs(title = "{closest_state}")
