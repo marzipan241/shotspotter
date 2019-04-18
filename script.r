@@ -7,6 +7,7 @@ library(ggplot2)
 library(sf)
 library(tigris)
 library(gganimate)
+library(ggthemes)
 
 
 washington_dc <- read_csv("http://justicetechlab.org/wp-content/uploads/2018/05/washington_dc_2006to2017.csv",
@@ -38,4 +39,5 @@ ggplot() +
   geom_sf(data = dc_sf) +
   geom_point(data = washington_dc, aes(x = longitude, y = latitude, alpha = 0.1, color = type)) +
   transition_states(year, transition_length = 0) +
-  labs(title = "{closest_state}")
+  labs(title = "{closest_state}") +
+  theme_map()
