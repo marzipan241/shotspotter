@@ -8,6 +8,7 @@ library(sf)
 library(tigris)
 library(gganimate)
 library(ggthemes)
+library(shinythemes)
 
 
 washington_dc <- read_csv("http://justicetechlab.org/wp-content/uploads/2018/05/washington_dc_2006to2017.csv",
@@ -32,7 +33,7 @@ ui <- fluidPage(
   titlePanel("Gunfire Incidents at Washington D.C. Through the Years"),
   
   # Application theme
-  theme = shinytheme("slate"),
+  # theme = shinytheme("slate"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -43,16 +44,18 @@ ui <- fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-      width = 7
+      width = 7,
+      imageOutput("plot1")
     )
-  ),
-  imageOutput("plot1")
+  )
 )
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
-  output$plot1 <- renderImage({"outfile.gif"})
+  output$plot1 <- renderImage({list(src = "washington_dc_distribution.gif",
+                                    contentType = "image/gif")}, 
+                              deleteFile = FALSE)
   
   } 
 

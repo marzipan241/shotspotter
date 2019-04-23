@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-
 *.Rproj
+gadm36_USA_0_sf.rds
