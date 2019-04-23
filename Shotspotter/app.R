@@ -10,23 +10,7 @@ library(gganimate)
 library(ggthemes)
 library(shinythemes)
 
-
-washington_dc <- read_csv("http://justicetechlab.org/wp-content/uploads/2018/05/washington_dc_2006to2017.csv",
-                          col_types = cols(
-                            incidentid = col_double(),
-                            latitude = col_double(),
-                            longitude = col_double(),
-                            year = col_double(),
-                            month = col_double(),
-                            day = col_double(),
-                            hour = col_double(),
-                            minute = col_double(),
-                            second = col_double(),
-                            numshots = col_double(),
-                            type = col_factor()
-                          )) 
-
-# Define UI for application that draws a histogram
+# Define the UI for this Shiny Application
 ui <- fluidPage(
   
   # Application title
@@ -38,7 +22,14 @@ ui <- fluidPage(
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
+      
+      # Change the width to 5 so that the Markdown file have more space to be
+      # displayed
+      
       width = 5,
+      
+      # Include the markdown file to render text more conveniently.
+      
       includeMarkdown("sidepanel.md")
     ),
     
@@ -52,6 +43,9 @@ ui <- fluidPage(
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
+  
+  # To reduce the loading time, we render the pre-rendered gif under the
+  # server's directory.
   
   output$plot1 <- renderImage({list(src = "washington_dc_distribution.gif",
                                     contentType = "image/gif")}, 

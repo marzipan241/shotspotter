@@ -86,11 +86,3 @@ ggplot() +
         axis.ticks.y=element_blank())
 
 anim_save("Shotspotter/washington_dc_distribution.gif")
-
-anim_save("outfile.gif", animate(p))
-
-# Return list containing filename
-list(src = "outfile.gif",
-     contentType = "image/gif")
-
-deleteFile = TRUE
