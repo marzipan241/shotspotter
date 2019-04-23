@@ -23,8 +23,9 @@ washington_dc <- read_csv("http://justicetechlab.org/wp-content/uploads/2018/05/
     second = col_double(),
     numshots = col_double(),
     type = col_factor()
-  )
-) %>% 
+  )) 
+
+washington_dc %>% 
   filter(!is.na(type))
 
 
