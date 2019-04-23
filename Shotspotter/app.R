@@ -8,31 +8,24 @@
 #
 
 library(shiny)
-
-
-x <- read.csv("http://justicetechlab.org/wp-content/uploads/2018/05/washington_dc_2006to2017.csv")
-
-
+library(markdown)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
    # Application title
-   titlePanel("Old Faithful Geyser Data"),
+   titlePanel("Gunfire Incidents at Washington D.C. Through the Years"),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30)
+        width = 5,
+        includeMarkdown("sidepanel.md")
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
-         plotOutput("distPlot")
+        width = 7
       )
    )
 )
