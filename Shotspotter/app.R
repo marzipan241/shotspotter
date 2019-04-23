@@ -7,10 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
 
-
-x <- read.csv("http://justicetechlab.org/wp-content/uploads/2018/05/washington_dc_2006to2017.csv")
 
 
 
