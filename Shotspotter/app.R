@@ -7,29 +7,31 @@
 #    http://shiny.rstudio.com/
 #
 
+<<<<<<< HEAD
 
 
 
+=======
+library(shiny)
+library(markdown)
+>>>>>>> efe712721996230c77326d73f69f2d737c660545
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
    
    # Application title
-   titlePanel("Old Faithful Geyser Data"),
+   titlePanel("Gunfire Incidents at Washington D.C. Through the Years"),
    
    # Sidebar with a slider input for number of bins 
    sidebarLayout(
       sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30)
+        width = 5,
+        includeMarkdown("sidepanel.md")
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
-         plotOutput("distPlot")
+        width = 7
       )
    )
 )
