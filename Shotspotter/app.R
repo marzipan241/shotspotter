@@ -52,37 +52,9 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
-  output$plot1 <- renderImage({
-    # generate bins based on input$bins from ui.R
-    outfile <- tempfile(fileext = ".gif")
-    
-    # Create the animation
-    
-    washington_dc %>% 
-      filter(!is.na(type))
-    
-    dc_sf <- get_acs(
-      geography = "tract", variables = "B19013_001",
-      state = "DC", geometry = TRUE
-    )
-    
-    urban_areas(class = "sf")
-    
-    p = ggplot() +
-      geom_sf(data = dc_sf) +
-      geom_point(data = washington_dc, aes(x = longitude, y = latitude, alpha = 0.1, color = type)) +
-      transition_states(year, transition_length = 0) +
-      labs(title = "{closest_state}") +
-      theme_map()
-    
-    anim_save("outfile.gif", animate(p))
-    
-    # Return list containing filename
-    list(src = "outfile.gif",
-         contentType = "image/gif")
-    
-  }, deleteFile = TRUE)
-}
+  output$plot1 <- renderImage({"outfile.gif"})
+  
+  } 
 
 # Run the application 
 shinyApp(ui = ui, server = server)
